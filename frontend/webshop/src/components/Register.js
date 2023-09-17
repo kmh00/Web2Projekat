@@ -1,0 +1,148 @@
+import React from "react";
+import {useState} from "react";
+import { useNavigate } from "react-router-dom";     
+import { RegisterUser } from "../services/UserServices";
+
+const Register = () => {
+
+
+    const navigate = useNavigate();
+    
+    const[email, setEmail] = useState('');
+    const[password, setPassword] = useState('');
+    const[password2, setPassword2] = useState('');
+    const[fullName, setFullName] = useState('');
+    const[address, setAddress] = useState('');
+    const[dateOfBirth, setDateOfBirth] = useState('');
+    const[username, setUsername] = useState('');
+    const[image, setImage] = useState('');
+    const[userType, setUserType] = useState('');
+    const[error, setError] = useState(false);
+    const[deliveryPrice, setDeliveryPrice] = useState('');
+    const[verificationStatus, setVerificationStatus] = useState('');
+
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+      
+        if(password === password2){
+            const userJSON = {
+                Username : username,
+                Email : email,
+                Password : password,
+                FullName : fullName,
+                DateOfBirth : dateOfBirth,
+                UserType : userType,
+                Address : address,
+                DeliveryPrice : deliveryPrice,
+                Verified : false,
+                VerificationStatus: verificationStatus,
+                UserImage : image
+            }
+            await RegisterUser(userJSON);
+
+        }
+    }
+
+    return (
+        <div>
+            <h2>Register: </h2>
+            <form  onSubmit={handleSubmit}>
+                <div >
+                    <label>Full name </label>
+                    <input type="text"
+                            value={fullName}
+                            name="fullName"
+                            placeholder="Full name"
+                            onChange={(e) => setFullName(e.target.value)}/>
+                    {error && fullName.length === 0 ? <div>You must enter your name!</div> : null}
+                </div>
+    
+                <div >
+                    <label>Username </label>
+                    <input type="text"
+                            value={username}
+                            name="username"
+                            placeholder="Username"
+                            onChange={(e) => setUsername(e.target.value)}/>
+                    {error && username.length === 0 ? <div>You must enter your username!</div> : null}
+                </div>
+    
+                <div >
+                    <label>Password </label>
+                    <input type="password"
+                            value={password}
+                            name="password"
+                            placeholder="Password"
+                            onChange={(e) => setPassword(e.target.value)}/>
+                    {error && password.length === 0 ? <div >You must enter your password!</div> : null}
+                </div>
+    
+                <div >
+                    <label>Confirm your password</label>
+                    <input type="password"
+                            value={password2}
+                            name="password2"
+                            placeholder="Confirm password"
+                            onChange={(e) => setPassword2(e.target.value)}/>
+                    {error && password2.length === 0 ? <div >You must confirm your password!</div> : null}
+                </div>
+    
+                <div >
+                            <label>Email </label>
+                            <input type="email"
+                                value={email}
+                                name="email"
+                                placeholder="Email"
+                                onChange={(e) => setEmail(e.target.value)}/>
+                            {error && email.length === 0 ? <div >You must enter the email address!</div> : null}
+                </div>
+    
+                <div className="form-group mt-3">
+                    <label>Date of birth</label>
+                    <input
+                    id='dateOfBirth'
+                    name='dateOfBirth'
+                    type="date"
+                    className="form-control mt-1"
+                    value={dateOfBirth}
+                    onChange={(e)=>{setDateOfBirth(e.target.value)}}
+                    />
+                </div>
+    
+                <div >
+                            <label>Address </label>
+                            <input type="text"
+                                value={address}
+                                name="address"
+                                placeholder="Address"
+                                onChange={(e) => setAddress(e.target.value)}/>
+                </div>
+    
+                <div >
+                            <label>User type </label>
+                            <select value={userType} name="userType" placeholder="User type">
+                                <option value="">Select user type</option>
+                                <option value={'SALESMAN'}>SALESMAN</option>
+                                <option value={'CUSTOMER'}>CUSTOMER</option>
+                                <option value={'ADMIN'}>ADMIN</option>
+                            </select>
+                            {error && userType.length === 0 ? <div>You must select user type!</div> : null}
+                </div>
+    
+               
+    
+                <button className="blueButton" type="submit" onClick={handleSubmit}>Sign up</button>
+    
+            </form>
+            <br></br>
+        </div>
+    );
+
+
+
+
+
+}
+
+export default Register;
