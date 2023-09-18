@@ -10,7 +10,7 @@ namespace WebShop.Models
 
         public string ShopperAddress { get; set; }
 
-        public List<Item> OrderedArticles { get; set; }
+        public List<Item> OrderedItems { get; set; }
 
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }

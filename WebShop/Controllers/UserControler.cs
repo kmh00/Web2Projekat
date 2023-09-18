@@ -18,14 +18,15 @@ namespace WebShop.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] UserDto UserDto)
         {
-            if (UserDto != null)
+
+            try
             {
                 _userService.RegisterUser(UserDto);
                 return NoContent();
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 

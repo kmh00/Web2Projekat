@@ -29,7 +29,7 @@ namespace WebShop
 
             
 
-            services.AddDbContext<WebShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("onlineShopDatabase")));
+            services.AddDbContext<WebShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WebStoreDatabase")));
 
 
             services.AddSwaggerGen(c =>

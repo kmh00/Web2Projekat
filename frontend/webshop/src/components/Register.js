@@ -18,29 +18,38 @@ const Register = () => {
     const[image, setImage] = useState('');
     const[userType, setUserType] = useState('');
     const[error, setError] = useState(false);
-    const[deliveryPrice, setDeliveryPrice] = useState('');
     const[verificationStatus, setVerificationStatus] = useState('');
 
-    
+    const handleSelectChange = (event) => {
+        setUserType(event.target.value);
+      };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
       
         if(password === password2){
             const userJSON = {
-                Username : username,
-                Email : email,
-                Password : password,
-                FullName : fullName,
-                DateOfBirth : dateOfBirth,
-                UserType : userType,
-                Address : address,
-                DeliveryPrice : deliveryPrice,
-                Verified : false,
-                VerificationStatus: verificationStatus,
-                UserImage : image
+                username : username,
+                email : email,
+                password : password,
+                fullName : fullName,
+                dateOfBirth : dateOfBirth,
+                userType : 1,
+                address : address,
+                verificationStatus: 1,
+                userImage : image,
+                verified : true
             }
-            await RegisterUser(userJSON);
-
+            const data = await RegisterUser(userJSON)
+            .then(data =>{
+                if(data.status === 204){
+                    alert("Successfully registered!");
+                    navigate("../");
+                }
+            })
+            .catch(error =>{
+                alert("Something went wrong, please try again.");
+            })
         }
     }
 
@@ -121,13 +130,22 @@ const Register = () => {
     
                 <div >
                             <label>User type </label>
-                            <select value={userType} name="userType" placeholder="User type">
+                            <select value={userType} name="userType" placeholder="User type" onChange={handleSelectChange}>
                                 <option value="">Select user type</option>
-                                <option value={'SALESMAN'}>SALESMAN</option>
-                                <option value={'CUSTOMER'}>CUSTOMER</option>
-                                <option value={'ADMIN'}>ADMIN</option>
+                                <option value={2}>SALESMAN</option>
+                                <option value={1}>CUSTOMER</option>
+                                <option value={0}>ADMIN</option>
                             </select>
                             {error && userType.length === 0 ? <div>You must select user type!</div> : null}
+                </div>
+
+                <div >
+                        <label>Image: </label> 
+                        <input type="text"
+                            value={image}
+                            name="image"
+                            placeholder="image"
+                            onChange={(e) => setImage(e.target.value)}/>
                 </div>
     
                

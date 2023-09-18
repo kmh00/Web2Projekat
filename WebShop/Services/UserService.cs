@@ -38,15 +38,14 @@ namespace WebShop.Services
         {
             if (_userRepository.FindByUsername(userDto.Username) != null)
             {
-                return;
+                throw new Exception("Username is not avalible!");
             }
             if (_userRepository.FindByEmail(userDto.Email) != null)
             {
-                return;
+                throw new Exception("Email not avalible!");
             }
 
-            User newUser = _mapper.Map<User>(userDto);
-            newUser.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+            User newUser = new User { Username = userDto.Username, Address = userDto.Address, DateOfBirth = userDto.DateOfBirth, Email = userDto.Email, FullName = userDto.FullName, UserImage = userDto.UserImage, Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password) };
 
             if (userDto.UserType == UserType.ADMIN)
             {
@@ -70,7 +69,7 @@ namespace WebShop.Services
         public string LogIn(UserLogInDto userLogInDto)
         {
             User user = _userRepository.FindByEmail(userLogInDto.Email);
-            if (user != null)
+            if (user == null)
                 return "Email doesn't exist";
 
             if (BCrypt.Net.BCrypt.Verify(userLogInDto.Password, user.Password))

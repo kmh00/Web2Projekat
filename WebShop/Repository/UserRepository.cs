@@ -1,4 +1,5 @@
-﻿using WebShop.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
+using WebShop.Infrastructure;
 using WebShop.Models;
 using WebShop.Repository.Interfaces;
 
@@ -25,6 +26,8 @@ namespace WebShop.Repository
 
         public void Add(User user)
         {
+            
+            
             _DbContext.Add(user);
             _DbContext.SaveChanges();
 
@@ -32,3 +35,4 @@ namespace WebShop.Repository
         }
     }
 }
+

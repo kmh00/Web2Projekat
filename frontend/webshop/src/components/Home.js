@@ -18,16 +18,18 @@ const Home = () => {
             return;
         }
         
-        const data = await LogInUser(email, password);
-        if(data == "User not verified"){
-          }
-          else if(data == "Wrong email or password"){
-            setInputsToEmpty();
-  
-          }
-          else{
-            alert("Successfull login!");
-          }
+        LogInUser(email, password)
+        .then(response => {
+            if(response.data == "User not verified"){
+                alert(response.data);
+            }
+            else if(response.data == "Wrong email or password"){
+                alert(response.data);
+            }
+            else{
+                alert(response.data);
+            }
+        })
 
     }
 
