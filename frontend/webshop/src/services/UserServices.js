@@ -26,3 +26,26 @@ export const RegisterUser = async (UserDto) => {
             }
         );
 }
+
+export async function GetUserData(email){
+    return await axios.get(`${process.env.REACT_APP_API_URL}/api/users/getUserData`, 
+    {
+        params: {email},  
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    
+);
+}
+
+export const UpdateUser = async(UserDto) => {
+
+        return await axios.post(`${process.env.REACT_APP_API_URL}/api/users/updateUser`,
+            UserDto,
+            {
+                headers: { "Content-Type": "application/json" },
+                withCredentials: true,
+            }
+        );
+
+}

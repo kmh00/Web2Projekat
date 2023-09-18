@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { LogInUser } from "../services/UserServices";
+import jwt_decode from 'jwt-decode'
 
 const Home = () => {
 
@@ -9,6 +10,18 @@ const Home = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[error, setError] = useState(false);
+
+    const redirectTo= (role) => {
+        if(role === 'ADMIN'){
+            navigate('/adminDashboard');
+        }
+        else if(role === 'SELLER'){
+            navigate('/sellerDashboard');
+        }
+        else if(role === 'CUSTOMER'){
+            navigate('/customerDashboard');
+        }
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -27,16 +40,17 @@ const Home = () => {
                 alert(response.data);
             }
             else{
-                alert(response.data);
+                localStorage.setItem("userToken", response.data)
+                localStorage.setItem("email", email);
+                var token = jwt_decode(response.data);
+                redirectTo(token["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"])
+
             }
         })
 
     }
 
-    const setInputsToEmpty = () => {
-        setEmail('');
-        setPassword(''); 
-    }
+    
     const gotoRegistration = () => {
         navigate('/register');
     };

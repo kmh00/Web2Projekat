@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebShop.Dto;
 using WebShop.Services.Interfaces;
 
@@ -48,7 +50,18 @@ namespace WebShop.Controllers
             {
                 return BadRequest("Wrong email!");
             }
+        }
 
+        [HttpGet("getUserData")]
+        public IActionResult GetUserData(string email)
+        {
+            return Ok(_userService.GetUserProfile(email));
+        }
+
+        [HttpPost("updateUser")]
+        public IActionResult UpdateProfile([FromBody] UserDto UserDto)
+        {
+                return Ok(_userService.UpdateUser(UserDto));
         }
     }
 }

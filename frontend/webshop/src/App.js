@@ -1,9 +1,11 @@
 import './App.css';
 import Home from './components/Home';
 import Register from './components/Register';
-import LoggedIn from './components/LoggedIn';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Header from './components/Header';
+import AdminDashboard from './components/admin/AdminDashboard';
+import CustomerDashboard from './components/customer/CustomerDashboard';
+import SellerDashboard from './components/seller/SellerDashboard';
+import Profile from './components/Profile';
 
 function App() {
   
@@ -11,11 +13,13 @@ function App() {
     <div>
     
     <BrowserRouter>
-    <Header/>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
-      {/* <Route path='/loggedIn' element={<LoggedIn/>}/> */}
+      <Route path='/adminDashboard' element={<AdminDashboard/>}/>
+      <Route path='/customerDashboard' element={<CustomerDashboard/>}/>
+      <Route path='/sellerDashboard' element={<SellerDashboard/>}/>
+      <Route path='/profile' element={<Profile/>}/>
     </Routes>
     </BrowserRouter>
     </div>

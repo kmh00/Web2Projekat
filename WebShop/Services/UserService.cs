@@ -45,16 +45,16 @@ namespace WebShop.Services
                 throw new Exception("Email not avalible!");
             }
 
-            User newUser = new User { Username = userDto.Username, Address = userDto.Address, DateOfBirth = userDto.DateOfBirth, Email = userDto.Email, FullName = userDto.FullName, UserImage = userDto.UserImage, Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password) };
-
-            if (userDto.UserType == UserType.ADMIN)
+            User newUser = new User { Username = userDto.Username, Address = userDto.Address, DateOfBirth = userDto.DateOfBirth, Email = userDto.Email, FullName = userDto.FullName, UserImage = userDto.UserImage, Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password), UserType = userDto.UserType };
+           
+            if (newUser.UserType == UserType.ADMIN)
             {
                 newUser.Verified = true;
                 newUser.VerificationStatus = Enums.VerificationStatus.ACCEPTED;
             }
             if (newUser.UserType == UserType.CUSTOMER)
             {
-                newUser.Verified = true;
+                newUser.Verified = true;    
                 newUser.VerificationStatus = Enums.VerificationStatus.ACCEPTED;
             }
             if (newUser.UserType == UserType.SELLER)
@@ -97,6 +97,43 @@ namespace WebShop.Services
             {
                 return "Wrong email or password";
             }
+        }
+
+        
+        public UserDto GetUserProfile(string email)
+        {
+            User user = _userRepository.FindByEmail(email);
+            UserDto userDto = _mapper.Map<UserDto>(user);
+            return userDto;
+        }
+
+        public UserDto UpdateUser(UserDto dto)
+        {
+            User u = new User()
+            {
+                Id = dto.Id,
+                Username = dto.Username,
+                Address = dto.Address,
+                DateOfBirth = dto.DateOfBirth,
+                Email = dto.Email,
+                FullName = dto.FullName,
+                UserImage = dto.UserImage,
+                Password = dto.Password,
+            };
+
+
+            User previous = _userRepository.FindById(u.Id);
+
+            if (previous == null)
+            {
+                return null;
+
+            }
+            else
+            {
+                _userRepository.UpdateUser(previous, u);
+            }
+            return _mapper.Map<UserDto>(u);
         }
     }
 }

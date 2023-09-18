@@ -34,7 +34,7 @@ const Register = () => {
                 password : password,
                 fullName : fullName,
                 dateOfBirth : dateOfBirth,
-                userType : 1,
+                userType : parseInt(userType, 10),
                 address : address,
                 verificationStatus: 1,
                 userImage : image,
@@ -44,7 +44,7 @@ const Register = () => {
             .then(data =>{
                 if(data.status === 204){
                     alert("Successfully registered!");
-                    navigate("../");
+                    navigate("/");
                 }
             })
             .catch(error =>{
@@ -107,7 +107,7 @@ const Register = () => {
                             {error && email.length === 0 ? <div >You must enter the email address!</div> : null}
                 </div>
     
-                <div className="form-group mt-3">
+                <div>
                     <label>Date of birth</label>
                     <input
                     id='dateOfBirth'
@@ -132,9 +132,11 @@ const Register = () => {
                             <label>User type </label>
                             <select value={userType} name="userType" placeholder="User type" onChange={handleSelectChange}>
                                 <option value="">Select user type</option>
-                                <option value={2}>SALESMAN</option>
-                                <option value={1}>CUSTOMER</option>
-                                <option value={0}>ADMIN</option>
+                                <option value="0">ADMIN</option>
+                                <option value="1">CUSTOMER</option>
+                                <option value="2">SALESMAN</option>
+                                
+                                
                             </select>
                             {error && userType.length === 0 ? <div>You must select user type!</div> : null}
                 </div>
