@@ -22,7 +22,7 @@ const SellerDashboard = () => {
     }
 
     const myOrdersRedirect = () => {
-        navigate('/myOrders');
+        navigate('/sellerOrders');
     }
 
     const logout = () => {

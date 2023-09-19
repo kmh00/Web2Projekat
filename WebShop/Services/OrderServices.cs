@@ -61,5 +61,19 @@ namespace WebShop.Services
             _orderRepository.AddOrder(order);
             return true;
         }
+
+        public List<OrderDto> GetAllOrders()
+        {
+            List<Order> orders= _orderRepository.GetAllOrders();
+            List<OrderDto> ordresDto = _mapper.Map<List<OrderDto>>(orders);
+            return ordresDto;
+        }
+
+        public List<OrderDto> GetAllOrdersSeller(string email)
+        {
+            List<Order> orders = _orderRepository.GetAllForSeller(email);
+            List<OrderDto> orderDtos = _mapper.Map<List<OrderDto>>(orders);
+            return orderDtos;
+        }
     }
 }

@@ -31,6 +31,16 @@ namespace WebShop.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("getAllOrders")]
+        public IActionResult GetAllOrders()
+        {
+            return Ok(_orderServices.GetAllOrders());
+        }
 
+        [HttpGet("getAllOrdersSeller")]
+        public IActionResult GetAllOrdersSeller(string email)
+        {
+            return Ok(_orderServices.GetAllOrdersSeller(email));
+        }
     }
 }

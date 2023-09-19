@@ -23,5 +23,26 @@ namespace WebShop.Repository
             _DbContext.SaveChanges();
             return;
         }
+
+        public List<Order> GetAllOrders()
+        {
+            return _DbContext.Orders.ToList();
+        }
+
+        public List<Order> GetAllForSeller(string email)
+        {
+            var orders = _DbContext.Orders.Include(o => o.OrderedItems).ToList();
+
+            List<Order> result = new List<Order>();
+
+            foreach (Order o in orders)
+            {
+                if (o.OrderedItems.Find(a => a.SellerId == email) != null)
+                    result.Add(o);
+
+            }
+            return result;
+        
+        }
     }
 }   

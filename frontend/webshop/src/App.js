@@ -9,6 +9,8 @@ import Verification from './components/admin/Verification'
 import AddNewItem from './components/seller/AddNewItem';
 import Profile from './components/Profile';
 import NewOrder from './components/customer/NewOrder';
+import Orders from './components/admin/Orders'
+import SellerOrders from './components/seller/SellerOrders';
 
 function App() {
   
@@ -21,10 +23,12 @@ function App() {
       <Route path='/register' element={<Register/>}/>
       <Route path='/adminDashboard' element={<AdminDashboard/>}/>
       <Route path='/verification' element={<Verification/>}/>
+      <Route path='/orders' element={<Orders/>}/>
       <Route path='/customerDashboard' element={<CustomerDashboard/>}/>
       <Route path='/newOrder' element={<NewOrder/>}/>
       <Route path='/sellerDashboard' element={<SellerDashboard/>}/>
       <Route path='/addNewItem' element={<AddNewItem/>}/>
+      <Route path='/sellerOrders' element={<SellerOrders/>}/>
       <Route path='/profile' element={<Profile/>}/>
     </Routes>
     </BrowserRouter>
