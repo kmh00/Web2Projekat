@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using WebShop.Enums;
 using WebShop.Infrastructure;
 using WebShop.Models;
 using WebShop.Repository.Interfaces;
@@ -53,6 +55,27 @@ namespace WebShop.Repository
             _DbContext.Users.FirstOrDefault(u => u.Id == userPrev.Id).Email = userNew.Email;
             _DbContext.SaveChanges();
             return userNew;
+        }
+
+        public List<User> GetAllSellers()
+        {
+            List<User> sellers =  _DbContext.Users.Where(u => u.UserType == UserType.SELLER).ToList();
+            return sellers;
+        }
+
+        public void Verify(long sellerId)
+        {
+            _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).VerificationStatus = VerificationStatus.ACCEPTED;
+            _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).Verified = true;
+            _DbContext.SaveChanges();
+            return;
+        }
+
+        public void Deny(long sellerId)
+        {
+            _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).VerificationStatus = VerificationStatus.DENIED;
+            _DbContext.SaveChanges();
+            return;
         }
     }
 }

@@ -79,7 +79,7 @@ namespace WebShop.Services
                 if (user.UserType == Enums.UserType.ADMIN)
                     claims.Add(new Claim(ClaimTypes.Role, "ADMIN"));
                 else if (user.UserType == Enums.UserType.SELLER)
-                    claims.Add(new Claim(ClaimTypes.Role, "SALESMAN"));
+                    claims.Add(new Claim(ClaimTypes.Role, "SELLER"));
                 else if (user.UserType == Enums.UserType.CUSTOMER)
                     claims.Add(new Claim(ClaimTypes.Role, "CUSTOMER"));
 
@@ -134,6 +134,24 @@ namespace WebShop.Services
                 _userRepository.UpdateUser(previous, u);
             }
             return _mapper.Map<UserDto>(u);
+        }
+
+        public List<UserDto> GetSellers()
+        {
+            List<UserDto> sellers = _mapper.Map<List<UserDto>>(_userRepository.GetAllSellers());
+
+            return sellers;
+        }
+
+        public void Verify(long sellerIs)
+        {
+            _userRepository.Verify(sellerIs);
+            return;
+        }
+
+        public void Deny(long sellerIs)
+        {
+            _userRepository.Deny(sellerIs);
         }
     }
 }

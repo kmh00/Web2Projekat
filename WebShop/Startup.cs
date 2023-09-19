@@ -98,8 +98,10 @@ namespace WebShop
 
             services.AddSingleton(mapper);
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IItemService, ItemService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
 
         }
 

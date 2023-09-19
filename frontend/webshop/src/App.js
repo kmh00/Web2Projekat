@@ -5,6 +5,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import AdminDashboard from './components/admin/AdminDashboard';
 import CustomerDashboard from './components/customer/CustomerDashboard';
 import SellerDashboard from './components/seller/SellerDashboard';
+import Verification from './components/admin/Verification'
+import AddNewItem from './components/seller/AddNewItem';
 import Profile from './components/Profile';
 
 function App() {
@@ -17,8 +19,10 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/adminDashboard' element={<AdminDashboard/>}/>
+      <Route path='/verification' element={<Verification/>}/>
       <Route path='/customerDashboard' element={<CustomerDashboard/>}/>
       <Route path='/sellerDashboard' element={<SellerDashboard/>}/>
+      <Route path='/addNewItem' element={<AddNewItem/>}/>
       <Route path='/profile' element={<Profile/>}/>
     </Routes>
     </BrowserRouter>

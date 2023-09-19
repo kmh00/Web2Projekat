@@ -13,8 +13,8 @@ const SellerDashboard = () => {
         navigate('/profile');
     }
     
-    const addArticleRedirect = () => {
-        navigate('/addArticle');
+    const addNewItemeRedirect = () => {
+        navigate('/addNewItem');
     }
     
     const newOrdersRedirect = () => {
@@ -34,7 +34,7 @@ const SellerDashboard = () => {
         <div>
             <h1>SELLER</h1>
             <button onClick={profileRedirect}>Profile</button>
-            <button onClick={addArticleRedirect}>Add article</button>
+            <button onClick={addNewItemeRedirect}>Add New Item</button>
             <button onClick={newOrdersRedirect}>New orders </button>
             <button onClick={myOrdersRedirect}>My orders </button>
             <button onClick={logout}>Log out</button>

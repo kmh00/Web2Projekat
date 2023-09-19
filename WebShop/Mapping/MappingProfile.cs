@@ -9,6 +9,7 @@ namespace WebShop.Mapping
         public MappingProfile()
         {
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<Item, ItemDto>().ReverseMap();
 
         }
     }

@@ -59,9 +59,44 @@ namespace WebShop.Controllers
         }
 
         [HttpPost("updateUser")]
-        public IActionResult UpdateProfile([FromBody] UserDto UserDto)
+        public IActionResult UpdateUser([FromBody] UserDto UserDto)
         {
                 return Ok(_userService.UpdateUser(UserDto));
+        }
+
+        [HttpGet("getSellers")]
+        public IActionResult GetSellers()
+        {
+            return Ok(_userService.GetSellers());
+        }
+
+        [HttpPost("verify")]
+        public IActionResult Verify(long sellerId)
+        {
+            try
+            {
+                _userService.Verify(sellerId);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("deny")]
+        public IActionResult Deny(string sellerId)
+        {
+            long Id = (long)Convert.ToDouble(sellerId);
+            try
+            {
+                _userService.Deny(Id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -47,5 +47,39 @@ export const UpdateUser = async(UserDto) => {
                 withCredentials: true,
             }
         );
-
 }
+
+export async function GetSellers(){
+    const userToken = localStorage.getItem("userToken");
+    return await axios.get(`${process.env.REACT_APP_API_URL}/api/users/getSellers`, 
+    {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+    }
+);
+}
+
+export async function Verify(id){
+    return await axios.post(`${process.env.REACT_APP_API_URL}/api/users/verify`, 
+    {
+        params: {id},  
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    
+);
+}
+
+export async function Deny(id){
+    return await axios.post(`${process.env.REACT_APP_API_URL}/api/users/deny`, 
+    {
+        params: {id},  
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    
+);
+}
+
+
+

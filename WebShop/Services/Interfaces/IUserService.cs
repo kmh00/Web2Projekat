@@ -8,5 +8,8 @@ namespace WebShop.Services.Interfaces
         string LogIn(UserLogInDto userLogInDto);
         UserDto GetUserProfile(string email);
         UserDto UpdateUser(UserDto dto);
+        List<UserDto> GetSellers();
+        void Verify(long sellerIs);
+        void Deny(long sellerIs);
     }
 }
