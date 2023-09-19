@@ -15,7 +15,7 @@ export const AddNewOrder = async (OrderDto) => {
 
 export const GetAllOrders = async () => {
     try {
-        return await axios.get(`${process.env.REACT_APP_API_URL}/pi/orders/getAllOrder`,
+        return await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/getAllOrders`,
        
         );
 

@@ -12,7 +12,7 @@ namespace WebShop.Dto
 
         public string ShippingAddress { get; set; }
 
-        public List<ItemDto> OrderedItems { get; set; }
+        public List<ItemOrderDto> OrderedItems { get; set; }
 
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }

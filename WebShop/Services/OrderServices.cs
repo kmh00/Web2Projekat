@@ -31,21 +31,30 @@ namespace WebShop.Services
 
         public bool CreateOrder(OrderDto orderDto)
         {
-            List<Item> items = _itemRepository.GetAllItems();
+            if (orderDto.OrderedItems == null)
+                return false;
 
-            Order order = _mapper.Map<Order>(orderDto);
-            order.Id = Guid.NewGuid().ToString();
-            List<Item> itemList = new List<Item>(orderDto.OrderedItems.Count);
-            foreach (var prod in orderDto.OrderedItems)
+
+            List<Item> items = new List<Item>();
+            foreach (ItemOrderDto item in orderDto.OrderedItems)
             {
-                var old = items.FirstOrDefault(x => x.Id == prod.Id);
-                old.Quantity -= 1;
-                itemList.Add(old);
+                Item a = _itemRepository.GetById(item.Id);
+
+                items.Add(a);
+
             }
 
-            order.OrderStatus = OrderStatus.InProgress;
 
-            order.OrderedItems = itemList;
+            Order newOrder = new Order()
+            {
+                OrderedItems = items,
+                Price = orderDto.Price,
+                DeliveryPrice = 300,
+                StartTime = DateTime.Now,
+                OrderStatus = OrderStatus.InProgress,
+                ShopperAddress = orderDto.ShippingAddress,
+                OrderUserEmail = orderDto.UserId,
+            };
 
             var seed = 3;
             var random = new Random(seed);
@@ -53,12 +62,9 @@ namespace WebShop.Services
             var rNum = random.Next(60, 600);
 
 
-            order.StartTime = DateTime.Now;
+            newOrder.EndTime = DateTime.Now.AddMinutes((double)(rNum));
 
-
-            order.EndTime = DateTime.Now.AddMinutes((double)(rNum));
-
-            _orderRepository.AddOrder(order);
+            _orderRepository.AddOrder(newOrder);
             return true;
         }
 

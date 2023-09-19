@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z3zKCPgIyCavltsnrQ4o1f/evg9oK5UqX8NcLgbWclOPaDTTE1AYz6UT7a3clltHF4BxFaHXrJLvwMlh9hKLFA==",
+  "dgSpecHash": "ipnNRPzUHo/qyqEE4TXOqQPDK88P+xyhq3h4SiaBw0RRvDIRZdwRrYfZoTnO2mzEoRS55ot4tLn0AJQ40iukXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat\\WebShop\\WebShop.csproj",
+  "projectFilePath": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat2\\WebShop\\WebShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\simce\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\simce\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

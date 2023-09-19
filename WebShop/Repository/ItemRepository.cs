@@ -24,5 +24,10 @@ namespace WebShop.Repository
         {
             return _DbContext.Items.ToList();
         }
+
+        public Item GetById(string id)
+        {
+            return _DbContext.Items.FirstOrDefault(a => a.Id == id);
+        }
     }
 }

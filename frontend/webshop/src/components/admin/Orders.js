@@ -46,12 +46,10 @@ const Orders = () => {
                 <tbody>
                 {orders.map(order => (
                     <tr key={order.id}>
-                        <td>{order.userId}</td>
                         <td>{order.price}</td>
-                        <td>{formatItems(order.items)}</td>
                         <td>{order.deliveryAddress}</td>
-                        <td>{order.orderTime.split('.')[0]}</td>
-                        <td>{order.deliveryTime.split('.')[0]}</td>
+                        <td>{order.startTime.split('.')[0]}</td>
+                        <td>{order.endTime.split('.')[0]}</td>
                         <td>{order.OrderStatus}</td>
                     </tr>
                     ))}

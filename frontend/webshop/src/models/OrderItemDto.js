@@ -1,11 +1,6 @@
 export default class OrderItemDto {
-    constructor(id, quantity, sellerId,name, description, price, imageUrl) {
+    constructor(id, quantity) {
         this.Id = id;
-        this.SellerId = sellerId;
         this.Quantity = quantity;
-        this.Name = name;
-        this.Description = description;
-        this.Price = price;
-        this.ImageUrl = imageUrl;
     }
 }

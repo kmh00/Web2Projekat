@@ -37,10 +37,10 @@ const NewOrder = () => {
 
       };
 
-    const handleOrdering = (id, quantity, priceOfItem ,sellerId, name2, description,imageUrl) => {
+    const handleOrdering = (id, quantity, priceOfItem) => {
         setPrice(price + (priceOfItem*quantity));
         //setPriceWithDelivery(price + 300);
-        setItemsForOrder([...itemsForOrder, new OrderItemDto(id, quantity, sellerId, name2, description, priceOfItem, imageUrl)]);
+        setItemsForOrder([...itemsForOrder, new OrderItemDto(id, quantity)]);
     }
 
     const order = () => {
@@ -83,9 +83,7 @@ const NewOrder = () => {
                         <td>{item.price}</td>
                         <td>{item.quantity}</td>
                         <td>{item.description}</td>
-                        <td> {item.imageUrl} {item.sellerId}</td>
-                        
-                        
+                        <td> {item.imageUrl}</td>
                         
                         <td>
                         Quantity:
@@ -96,7 +94,7 @@ const NewOrder = () => {
                                 </option>
                             ))}
                         </select>
-                            <button disabled = {( parseInt(item.quanyity) === 0)} onClick={() => handleOrdering(item.id, selectedValues[item.id], item.price, item.sellerId, item.name, item.description, item.imageUrl)}>Add to cart</button>
+                            <button disabled = {( parseInt(item.quanyity) === 0)} onClick={() => handleOrdering(item.id, selectedValues[item.id], item.price,)}>Add to cart</button>
                         </td>
                         
                     </tr>

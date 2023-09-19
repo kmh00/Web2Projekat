@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat\\WebShop\\WebShop.csproj": {}
+    "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat2\\WebShop\\WebShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat\\WebShop\\WebShop.csproj": {
+    "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat2\\WebShop\\WebShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat\\WebShop\\WebShop.csproj",
+        "projectUniqueName": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat2\\WebShop\\WebShop.csproj",
         "projectName": "WebShop",
-        "projectPath": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat\\WebShop\\WebShop.csproj",
+        "projectPath": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat2\\WebShop\\WebShop.csproj",
         "packagesPath": "C:\\Users\\simce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat\\WebShop\\obj\\",
+        "outputPath": "C:\\Users\\simce\\Documents\\GitHub\\Web2Projekat2\\WebShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

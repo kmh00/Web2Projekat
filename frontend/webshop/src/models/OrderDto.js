@@ -4,11 +4,8 @@ export default class OrderDto {
         this.OrderedItems = OrderedItems;
         this.UserId = userId;
         this.ShippingAddress = deliveryAddress;
-        this.deliveryPrice = 300;
         this.Price = price;
-        this.StartTime="";
-        this.EndTime = "";
-        this.OrderedStatus = 0;
+        
     }
 
     addArticle(OrderedItems) {

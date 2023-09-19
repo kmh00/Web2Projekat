@@ -6,5 +6,6 @@ namespace WebShop.Repository.Interfaces
     {
         void Add(Item item);
         List<Item> GetAllItems();
+        Item GetById(string id);
     }
 }
