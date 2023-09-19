@@ -32,17 +32,16 @@ namespace WebShop.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserType = table.Column<int>(type: "int", nullable: false),
-                    Verified = table.Column<bool>(type: "bit", nullable: true),
+                    Verified = table.Column<bool>(type: "bit", nullable: false),
                     VerificationStatus = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -60,8 +59,9 @@ namespace WebShop.Migrations
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeliveryPrice = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<int>(type: "int", nullable: false),
                     OrderStatus = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<long>(type: "bigint", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,15 +77,15 @@ namespace WebShop.Migrations
                 name: "ItemOrder",
                 columns: table => new
                 {
-                    OrderedArticlesId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OrderedItemsId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     OrdersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItemOrder", x => new { x.OrderedArticlesId, x.OrdersId });
+                    table.PrimaryKey("PK_ItemOrder", x => new { x.OrderedItemsId, x.OrdersId });
                     table.ForeignKey(
-                        name: "FK_ItemOrder_Items_OrderedArticlesId",
-                        column: x => x.OrderedArticlesId,
+                        name: "FK_ItemOrder_Items_OrderedItemsId",
+                        column: x => x.OrderedItemsId,
                         principalTable: "Items",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -106,6 +106,12 @@ namespace WebShop.Migrations
                 name: "IX_Orders_UserId",
                 table: "Orders",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
         }
 
         /// <inheritdoc />

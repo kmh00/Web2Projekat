@@ -10,6 +10,7 @@ namespace WebShop.Mapping
         {
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Item, ItemDto>().ReverseMap();
+            CreateMap<Order, OrderDto>().ReverseMap();
 
         }
     }

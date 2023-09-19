@@ -23,7 +23,15 @@ namespace WebShop.Services
         public void AddItem(ItemDto productDto)
         {
             var item = _mapper.Map<Item>(productDto);
+            item.Id = Guid.NewGuid().ToString();
             _itemRepository.Add(item);
+        }
+
+        public List<ItemDto> GetAllItems()
+        {
+            List <Item> items = _itemRepository.GetAllItems();
+            List<ItemDto> result = _mapper.Map<List<ItemDto>>(items);
+            return result;
         }
     }
 }

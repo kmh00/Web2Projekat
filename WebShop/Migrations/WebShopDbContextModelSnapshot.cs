@@ -24,13 +24,13 @@ namespace WebShop.Migrations
 
             modelBuilder.Entity("ItemOrder", b =>
                 {
-                    b.Property<string>("OrderedArticlesId")
+                    b.Property<string>("OrderedItemsId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("OrdersId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("OrderedArticlesId", "OrdersId");
+                    b.HasKey("OrderedItemsId", "OrdersId");
 
                     b.HasIndex("OrdersId");
 
@@ -86,6 +86,9 @@ namespace WebShop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.Property<string>("ShopperAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -93,8 +96,8 @@ namespace WebShop.Migrations
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -105,11 +108,9 @@ namespace WebShop.Migrations
 
             modelBuilder.Entity("WebShop.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -120,7 +121,7 @@ namespace WebShop.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -144,10 +145,13 @@ namespace WebShop.Migrations
                     b.Property<int>("VerificationStatus")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Verified")
+                    b.Property<bool>("Verified")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -156,7 +160,7 @@ namespace WebShop.Migrations
                 {
                     b.HasOne("WebShop.Models.Item", null)
                         .WithMany()
-                        .HasForeignKey("OrderedArticlesId")
+                        .HasForeignKey("OrderedItemsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

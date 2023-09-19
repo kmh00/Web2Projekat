@@ -45,7 +45,7 @@ namespace WebShop.Services
                 throw new Exception("Email not avalible!");
             }
 
-            User newUser = new User { Username = userDto.Username, Address = userDto.Address, DateOfBirth = userDto.DateOfBirth, Email = userDto.Email, FullName = userDto.FullName, UserImage = userDto.UserImage, Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password), UserType = userDto.UserType };
+            User newUser = new User {Id = Guid.NewGuid().ToString(), Username = userDto.Username, Address = userDto.Address, DateOfBirth = userDto.DateOfBirth, Email = userDto.Email, FullName = userDto.FullName, UserImage = userDto.UserImage, Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password), UserType = userDto.UserType };
            
             if (newUser.UserType == UserType.ADMIN)
             {
@@ -143,13 +143,13 @@ namespace WebShop.Services
             return sellers;
         }
 
-        public void Verify(long sellerIs)
+        public void Verify(string sellerIs)
         {
             _userRepository.Verify(sellerIs);
             return;
         }
 
-        public void Deny(long sellerIs)
+        public void Deny(string sellerIs)
         {
             _userRepository.Deny(sellerIs);
         }

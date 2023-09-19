@@ -20,6 +20,7 @@ const AddNewItem = () => {
         if(sellerId != null){
             const itemJSON = {
                 Name : name,
+                Id : '',
                 Price : price,
                 Quantity : quantity,
                 Description : description,
@@ -56,7 +57,6 @@ const AddNewItem = () => {
                             name="name"
                             placeholder="Name of item"
                             onChange={(e) => setName(e.target.value)}/>
-                    {error && name.length === 0 ? <div >You must enter your name!</div> : null}
                 </div>
 
                 <div >
@@ -66,7 +66,6 @@ const AddNewItem = () => {
                             name="price"
                             placeholder="Price"
                             onChange={(e) => setPrice(e.target.value)}/>
-                    {error && price.length === 0 ? <div >You must enter your username!</div> : null}
                 </div>
 
                 <div>
@@ -76,7 +75,6 @@ const AddNewItem = () => {
                             name="quantity"
                             placeholder="Quantity"
                             onChange={(e) => setQuantity(e.target.value)}/>
-                    {error && quantity.length === 0 ? <div >You must enter your password!</div> : null}
                 </div>
 
                 <div>
@@ -86,7 +84,6 @@ const AddNewItem = () => {
                                 name="description"
                                 placeholder="Description"
                                 onChange={(e) => setDescription(e.target.value)}/>
-                            {error && description.length === 0 ? <div>You must enter the email address!</div> : null}
                 </div>
 
                 <div >

@@ -99,9 +99,11 @@ namespace WebShop
             services.AddSingleton(mapper);
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IOrderServices, OrderServices>();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
         }
 

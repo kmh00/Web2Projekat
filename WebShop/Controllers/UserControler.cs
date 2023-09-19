@@ -71,7 +71,7 @@ namespace WebShop.Controllers
         }
 
         [HttpPost("verify")]
-        public IActionResult Verify(long sellerId)
+        public IActionResult Verify(string sellerId)
         {
             try
             {
@@ -87,10 +87,9 @@ namespace WebShop.Controllers
         [HttpPost("deny")]
         public IActionResult Deny(string sellerId)
         {
-            long Id = (long)Convert.ToDouble(sellerId);
             try
             {
-                _userService.Deny(Id);
+                _userService.Deny(sellerId);
                 return NoContent();
             }
             catch (Exception ex)

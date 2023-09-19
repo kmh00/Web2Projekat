@@ -16,13 +16,14 @@ namespace WebShop.Models
         public DateTime EndTime { get; set; }
 
         public int DeliveryPrice { get; set; }
+        public int Price { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
 
         public Order()
         {
             Id = Guid.NewGuid().ToString();
-            DeliveryPrice = 250;
+            DeliveryPrice = 450;
         }
     }
 }

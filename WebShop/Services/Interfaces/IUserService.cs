@@ -9,7 +9,7 @@ namespace WebShop.Services.Interfaces
         UserDto GetUserProfile(string email);
         UserDto UpdateUser(UserDto dto);
         List<UserDto> GetSellers();
-        void Verify(long sellerIs);
-        void Deny(long sellerIs);
+        void Verify(string sellerIs);
+        void Deny(string sellerIs);
     }
 }

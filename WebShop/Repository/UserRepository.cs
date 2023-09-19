@@ -20,7 +20,7 @@ namespace WebShop.Repository
         {
             return _DbContext.Users.SingleOrDefault<User>(u => String.Equals(u.Email, email));
         }
-        public User FindById(long id)
+        public User FindById(string id)
         {
             return _DbContext.Users.SingleOrDefault<User>(u => String.Equals(u.Id, id));
         }
@@ -63,7 +63,7 @@ namespace WebShop.Repository
             return sellers;
         }
 
-        public void Verify(long sellerId)
+        public void Verify(string sellerId)
         {
             _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).VerificationStatus = VerificationStatus.ACCEPTED;
             _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).Verified = true;
@@ -71,7 +71,7 @@ namespace WebShop.Repository
             return;
         }
 
-        public void Deny(long sellerId)
+        public void Deny(string sellerId)
         {
             _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).VerificationStatus = VerificationStatus.DENIED;
             _DbContext.SaveChanges();

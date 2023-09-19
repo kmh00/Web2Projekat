@@ -29,6 +29,7 @@ const Register = () => {
       
         if(password === password2){
             const userJSON = {
+                id : "",
                 username : username,
                 email : email,
                 password : password,
@@ -134,7 +135,7 @@ const Register = () => {
                                 <option value="">Select user type</option>
                                 <option value="0">ADMIN</option>
                                 <option value="1">CUSTOMER</option>
-                                <option value="2">SALESMAN</option>
+                                <option value="2">SELLER</option>
                                 
                                 
                             </select>

@@ -11,3 +11,12 @@ export const AddItem = async (item) => {
         );
     } 
 
+    export const GetItems = async () => {
+      return await axios.get(`${process.env.REACT_APP_API_URL}/api/items/getItems`,
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+      );
+  }  
+

@@ -7,7 +7,7 @@ import { GetSellers, Verify, Deny } from "../../services/UserServices";
 
 export default function(){
 
-    const[id, setId] = useState('');
+    const [id, setId] = useState('');
     const [sellers, setSellers] = useState([]);
     //const data = GetAllSalesmans();
     
@@ -24,23 +24,16 @@ export default function(){
         fetchData();
       }, []);
 
-      function reloadPage() {
-        window.location.reload();
-      }
+    
 
-      const verify = (sellerId) => {
-        setId(sellerId)
-        alert(id)
-        Verify(id);
-        
-     
+    const verify = (sellerId) => {
+        var i = sellerId;
+        const response = Verify(i);
     };
-
     const deny = (sellerId) => {
      
           try {
             const response = Deny(sellerId);
-            reloadPage();
           } 
           catch (error) {
             console.log(error);
@@ -74,7 +67,7 @@ export default function(){
                         {seller.verificationStatus}
                         </td>
                         <td>
-                            <button disabled = {!(seller.verificationStatus === 0)} onClick={() => verify(seller.id)} >Accept</button>
+                            <button  disabled = {!(seller.verificationStatus === 0)} onClick={() => verify(seller.id)} >Accept</button>
                             <button  disabled = {!(seller.verificationStatus === 0)} onClick={() => deny(seller.id)}>Deny</button>
                         </td>
                         
@@ -86,4 +79,4 @@ export default function(){
        </div>
 
     );
-}
+                    }

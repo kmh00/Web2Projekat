@@ -59,10 +59,11 @@ export async function GetSellers(){
 );
 }
 
-export async function Verify(id){
-    return await axios.post(`${process.env.REACT_APP_API_URL}/api/users/verify`, 
+export async function Verify(SellerId){
+    alert(SellerId);
+    return await axios.get(`${process.env.REACT_APP_API_URL}/api/users/getUserData`, 
     {
-        params: {id},  
+        params: {SellerId},  
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }

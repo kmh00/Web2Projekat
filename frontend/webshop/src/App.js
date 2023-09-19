@@ -8,6 +8,7 @@ import SellerDashboard from './components/seller/SellerDashboard';
 import Verification from './components/admin/Verification'
 import AddNewItem from './components/seller/AddNewItem';
 import Profile from './components/Profile';
+import NewOrder from './components/customer/NewOrder';
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
       <Route path='/adminDashboard' element={<AdminDashboard/>}/>
       <Route path='/verification' element={<Verification/>}/>
       <Route path='/customerDashboard' element={<CustomerDashboard/>}/>
+      <Route path='/newOrder' element={<NewOrder/>}/>
       <Route path='/sellerDashboard' element={<SellerDashboard/>}/>
       <Route path='/addNewItem' element={<AddNewItem/>}/>
       <Route path='/profile' element={<Profile/>}/>

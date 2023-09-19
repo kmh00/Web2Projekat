@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using WebShop.Models;
 
 namespace WebShop.Infrastructure
@@ -18,8 +19,8 @@ namespace WebShop.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(WebShopDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Order>().HasMany(x => x.OrderedItems).WithMany(x => x.Orders);
         }
     }
 }

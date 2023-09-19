@@ -19,5 +19,10 @@ namespace WebShop.Repository
             _DbContext.SaveChanges();
             return;
         }
+
+        public List<Item> GetAllItems()
+        {
+            return _DbContext.Items.ToList();
+        }
     }
 }

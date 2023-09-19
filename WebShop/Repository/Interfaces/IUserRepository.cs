@@ -7,11 +7,11 @@ namespace WebShop.Repository.Interfaces
         User FindByEmail(string email);
         User FindByUsername(string username);
         void Add(User user);
-        User FindById(long id);
+        User FindById(string id);
         User UpdateUser(User userPrev, User userNew);
         List<User> GetAllSellers();
-        void Verify(long sellerId);
-        void Deny(long sellerId);
+        void Verify(string sellerId);
+        void Deny(string sellerId);
 
     }
 }

@@ -32,6 +32,12 @@ namespace WebShop.Controllers
             }
 
         }
+
+        [HttpGet("getItems")]
+        public IActionResult GetProducts()
+        {
+            return Ok(_itemService.GetAllItems());
+        }
     }
 }
 
