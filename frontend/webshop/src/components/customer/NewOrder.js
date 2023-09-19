@@ -12,6 +12,7 @@ const NewOrder = () => {
     const[price, setPrice] = useState(0);
     const [items, setItems] = useState([]);
     const[itemsForOrder, setItemsForOrder] = useState([]);
+    const[deliveryAddress, setDeliveryAddress] = useState('');
 
     useEffect(() => {
         const getItems = async() =>{
@@ -45,7 +46,7 @@ const NewOrder = () => {
 
     const order = () => {
         const userId = localStorage.getItem('email');
-        const order = new OrderDto("", itemsForOrder, userId, "deliveryAddress", price);
+        const order = new OrderDto("", itemsForOrder, userId, deliveryAddress, price);
         
         
             AddNewOrder(order) 
@@ -106,20 +107,24 @@ const NewOrder = () => {
             <table >
                 <thead>
                     <tr>
-                    <th>Id</th>
+                    <th>Name</th>
                     <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
                 {itemsForOrder.map(item => (
                     <tr>
-                        <td>{item.Id}</td>
+                        <td>{item.name}</td>
                         <td>{item.Quantity}</td>
                     </tr>
                     ))}
                 </tbody>
             </table>   
             <h3>Price: {price}</h3>    
+            <h3>Delivery price: 300.00</h3>
+            <h3>Total price of your order: {price + 300}</h3>
+            <input type="text" value={deliveryAddress} onChange={(e) => setDeliveryAddress(e.target.value)} placeholder='Delivery address'></input>
+            
             <button onClick={order}>Order</button>       
             
         </div>

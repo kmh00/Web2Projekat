@@ -59,11 +59,11 @@ export async function GetSellers(){
 );
 }
 
-export async function Verify(SellerId){
-    alert(SellerId);
+export async function Verify(email){
+    alert(email);
     return await axios.get(`${process.env.REACT_APP_API_URL}/api/users/getUserData`, 
     {
-        params: {SellerId},  
+        params: {email},  
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
@@ -71,10 +71,10 @@ export async function Verify(SellerId){
 );
 }
 
-export async function Deny(id){
+export async function Deny(email){
     return await axios.post(`${process.env.REACT_APP_API_URL}/api/users/deny`, 
     {
-        params: {id},  
+        params: {email},  
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }

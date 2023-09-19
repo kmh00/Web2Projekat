@@ -63,17 +63,17 @@ namespace WebShop.Repository
             return sellers;
         }
 
-        public void Verify(string sellerId)
+        public void Verify(string email)
         {
-            _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).VerificationStatus = VerificationStatus.ACCEPTED;
-            _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).Verified = true;
+            _DbContext.Users.FirstOrDefault(u => u.Email == email).VerificationStatus = VerificationStatus.ACCEPTED;
+            _DbContext.Users.FirstOrDefault(u => u.Email == email).Verified = true;
             _DbContext.SaveChanges();
             return;
         }
 
-        public void Deny(string sellerId)
+        public void Deny(string email)
         {
-            _DbContext.Users.FirstOrDefault(u => u.Id == sellerId).VerificationStatus = VerificationStatus.DENIED;
+            _DbContext.Users.FirstOrDefault(u => u.Email == email).VerificationStatus = VerificationStatus.DENIED;
             _DbContext.SaveChanges();
             return;
         }

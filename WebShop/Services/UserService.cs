@@ -143,15 +143,15 @@ namespace WebShop.Services
             return sellers;
         }
 
-        public void Verify(string sellerIs)
+        public void Verify(string email)
         {
-            _userRepository.Verify(sellerIs);
+            _userRepository.Verify(email);
             return;
         }
 
-        public void Deny(string sellerIs)
+        public void Deny(string email)
         {
-            _userRepository.Deny(sellerIs);
+            _userRepository.Deny(email);
         }
     }
 }

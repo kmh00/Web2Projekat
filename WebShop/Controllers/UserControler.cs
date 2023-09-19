@@ -71,11 +71,11 @@ namespace WebShop.Controllers
         }
 
         [HttpPost("verify")]
-        public IActionResult Verify(string sellerId)
+        public IActionResult Verify(string email)
         {
             try
             {
-                _userService.Verify(sellerId);
+                _userService.Verify(email);
                 return NoContent();
             }
             catch (Exception ex)
@@ -85,11 +85,11 @@ namespace WebShop.Controllers
         }
 
         [HttpPost("deny")]
-        public IActionResult Deny(string sellerId)
+        public IActionResult Deny(string email)
         {
             try
             {
-                _userService.Deny(sellerId);
+                _userService.Deny(email);
                 return NoContent();
             }
             catch (Exception ex)

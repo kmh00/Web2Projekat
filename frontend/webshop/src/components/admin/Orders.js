@@ -32,14 +32,10 @@ const Orders = () => {
             <table >
                 <thead>
                     <tr>
-                    <th>User id</th>
                     <th>Price</th>
-                    <th>items</th>
-                    <th>Comment</th>
                     <th>Delivery address</th>
                     <th>Order time</th>
                     <th>Delivery time</th>
-                    
                     <th>Status</th>
                     </tr>
                 </thead>
